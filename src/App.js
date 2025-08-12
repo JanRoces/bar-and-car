@@ -204,7 +204,6 @@ function App() {
 
     if (!bothCorrectNow) {
       setWrongAttempts(prev => (prev < 3 ? prev + 1 : prev));
-      // Show a temporary lose message
       const msg = pickUniqueLoseMessage();
       setLoseMessage(msg);
       setLoseMessageId(prev => prev + 1);
