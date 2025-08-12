@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/bar-and-car/static/css/main.d7c5c03f.css",
-    "main.js": "/bar-and-car/static/js/main.51d4c994.js",
+    "main.js": "/bar-and-car/static/js/main.fc725f2a.js",
     "index.html": "/bar-and-car/index.html",
     "main.d7c5c03f.css.map": "/bar-and-car/static/css/main.d7c5c03f.css.map",
-    "main.51d4c994.js.map": "/bar-and-car/static/js/main.51d4c994.js.map"
+    "main.fc725f2a.js.map": "/bar-and-car/static/js/main.fc725f2a.js.map"
   },
   "entrypoints": [
     "static/css/main.d7c5c03f.css",
-    "static/js/main.51d4c994.js"
+    "static/js/main.fc725f2a.js"
   ]
 }
