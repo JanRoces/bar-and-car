@@ -10,6 +10,8 @@ const WIN_MESSAGES = [
   'gengar is happy',
   'rj is happy',
   'FUCK YEAH',
+  "where's the freakin' gabagool?",
+  'hayley williams <3',
 ];
 
 const LOSE_MESSAGES = [
@@ -24,6 +26,10 @@ const LOSE_MESSAGES = [
   'u made capy cry',
   'i hate u',
   'AW FUCK',
+  'HELLO? R U DENSE?',
+  'r u mad at me?',
+  'damn bitch, u live like this?',
+  'why i outtaa',
 ];
 
 function App() {
