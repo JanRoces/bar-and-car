@@ -95,7 +95,6 @@ function App() {
   useEffect(() => {
     if (albumGuessedCorrect && songGuessedCorrect && !celebrated) {
       setCelebrated(true);
-      // Pick and show a random win message
       const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
       setWinMessage(msg);
       if (typeof window !== 'undefined' && window.confetti) {
