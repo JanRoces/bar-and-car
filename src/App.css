@@ -104,6 +104,13 @@
   animation: fadeInOut 1.2s ease-in-out forwards;
 }
 
+img.win-message,
+img.lose-message {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(8px); }
   20% { opacity: 1; transform: translateY(0); }
