@@ -1,13 +1,25 @@
 {
   "files": {
-    "main.css": "/bar-and-car/static/css/main.d7c5c03f.css",
-    "main.js": "/bar-and-car/static/js/main.fc725f2a.js",
+    "main.css": "/bar-and-car/static/css/main.eab768cd.css",
+    "main.js": "/bar-and-car/static/js/main.7cce017a.js",
+    "static/media/07.png": "/bar-and-car/static/media/07.32e5ce9f6973ebec2c6a.png",
+    "static/media/01.gif": "/bar-and-car/static/media/01.c1d68ee5c93281c9d8ff.gif",
+    "static/media/10.png": "/bar-and-car/static/media/10.ab88e2dd35855966df41.png",
+    "static/media/03.gif": "/bar-and-car/static/media/03.4be01fc476c19d38fabf.gif",
+    "static/media/06.png": "/bar-and-car/static/media/06.2008f8f89e25de163066.png",
+    "static/media/08.png": "/bar-and-car/static/media/08.96f35ebd86b6d0918a4c.png",
+    "static/media/04.png": "/bar-and-car/static/media/04.d0323a4b5b4916bc2e94.png",
+    "static/media/09.png": "/bar-and-car/static/media/09.43988caea9461555fbfc.png",
+    "static/media/05.png": "/bar-and-car/static/media/05.66eb5ca4dfbe50934077.png",
+    "static/media/02.gif": "/bar-and-car/static/media/02.cce5984426b4425f95be.gif",
+    "static/media/02.png": "/bar-and-car/static/media/02.dd8e3d55c50a72da4cb1.png",
+    "static/media/03.png": "/bar-and-car/static/media/03.8716d44b6d498c72aff1.png",
     "index.html": "/bar-and-car/index.html",
-    "main.d7c5c03f.css.map": "/bar-and-car/static/css/main.d7c5c03f.css.map",
-    "main.fc725f2a.js.map": "/bar-and-car/static/js/main.fc725f2a.js.map"
+    "main.eab768cd.css.map": "/bar-and-car/static/css/main.eab768cd.css.map",
+    "main.7cce017a.js.map": "/bar-and-car/static/js/main.7cce017a.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7c5c03f.css",
-    "static/js/main.fc725f2a.js"
+    "static/css/main.eab768cd.css",
+    "static/js/main.7cce017a.js"
   ]
 }
