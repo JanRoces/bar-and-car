@@ -36,7 +36,9 @@ function App() {
     const available = Array.from({ length: total }, (_, i) => i).filter(
       i => !usedLoseIndices.includes(i),
     );
+
     let chosenIndex;
+
     if (available.length === 0) {
       chosenIndex = Math.floor(Math.random() * total);
       setUsedLoseIndices([chosenIndex]);
@@ -142,6 +144,7 @@ function App() {
         setLoseImage(null);
         setUsedLoseIndices([]);
         setLoseImageId(0);
+
         if (loseMessageTimeoutRef.current) {
           clearTimeout(loseMessageTimeoutRef.current);
           loseMessageTimeoutRef.current = null;
@@ -163,6 +166,7 @@ function App() {
       !albumGuessedCorrect &&
       albumGuessNormalized &&
       albumGuessNormalized === normalize(album);
+
     const isSongCorrectThisSubmit =
       !songGuessedCorrect &&
       songGuessNormalized &&
@@ -190,9 +194,12 @@ function App() {
 
     if (!bothCorrectNow) {
       setWrongAttempts(prev => (prev < 3 ? prev + 1 : prev));
+
       const idx = pickUniqueLoseImageIndex();
+
       setLoseImage(loseImages[idx]);
       setLoseImageId(prev => prev + 1);
+
       if (loseMessageTimeoutRef.current) {
         clearTimeout(loseMessageTimeoutRef.current);
       }

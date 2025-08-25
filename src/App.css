@@ -101,14 +101,19 @@
   font-style: italic;
   text-shadow: 2px 2px #a2d2ff;
   opacity: 0;
-  animation: fadeInOut 1.2s ease-in-out forwards;
+  animation: fadeInOut 2s ease-in-out forwards;
 }
 
 img.win-message,
 img.lose-message {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   object-fit: contain;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 @keyframes fadeInOut {
