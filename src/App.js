@@ -1,36 +1,16 @@
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
 
-const WIN_MESSAGES = [
-  "LET'S GO",
-  'i love u',
-  'jin loves u',
-  'andreana loves u',
-  'u made capy happy',
-  'gengar is happy',
-  'rj is happy',
-  'FUCK YEAH',
-  "where's the freakin' gabagool?",
-  'hayley williams <3',
-];
+function importAll(r) {
+  return r.keys().map(r);
+}
 
-const LOSE_MESSAGES = [
-  'r u stupid?',
-  'do u hate me?',
-  'am i better than u?',
-  "we're not friends",
-  'u like bob haircuts',
-  'rachel zegler',
-  'u made rj cry',
-  'u made gengar cry',
-  'u made capy cry',
-  'i hate u',
-  'AW FUCK',
-  'HELLO? R U DENSE?',
-  'r u mad at me?',
-  'damn bitch, u live like this?',
-  'why i outtaa',
-];
+const winImages = importAll(
+  require.context('./images/win', false, /\.(png|jpe?g|gif)$/),
+);
+const loseImages = importAll(
+  require.context('./images/lose', false, /\.(png|jpe?g|gif)$/),
+);
 
 function App() {
   const [lyric, setLyric] = useState(null);
@@ -45,18 +25,20 @@ function App() {
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [celebrated, setCelebrated] = useState(false);
   const celebrationTimeoutRef = useRef(null);
-  const [winMessage, setWinMessage] = useState(null);
-  const [loseMessage, setLoseMessage] = useState(null);
+  const [winImage, setWinImage] = useState(null);
+  const [loseImage, setLoseImage] = useState(null);
   const loseMessageTimeoutRef = useRef(null);
   const [usedLoseIndices, setUsedLoseIndices] = useState([]);
-  const [loseMessageId, setLoseMessageId] = useState(0);
+  const [loseImageId, setLoseImageId] = useState(0);
 
-  function pickUniqueLoseMessage() {
-    const total = LOSE_MESSAGES.length;
+  function pickUniqueLoseImageIndex() {
+    const total = loseImages.length;
     const available = Array.from({ length: total }, (_, i) => i).filter(
       i => !usedLoseIndices.includes(i),
     );
+
     let chosenIndex;
+
     if (available.length === 0) {
       chosenIndex = Math.floor(Math.random() * total);
       setUsedLoseIndices([chosenIndex]);
@@ -65,7 +47,7 @@ function App() {
       chosenIndex = available[idx];
       setUsedLoseIndices(prev => [...prev, chosenIndex]);
     }
-    return LOSE_MESSAGES[chosenIndex];
+    return chosenIndex;
   }
 
   function normalize(input) {
@@ -101,8 +83,8 @@ function App() {
   useEffect(() => {
     if (albumGuessedCorrect && songGuessedCorrect && !celebrated) {
       setCelebrated(true);
-      const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
-      setWinMessage(msg);
+      const img = winImages[Math.floor(Math.random() * winImages.length)];
+      setWinImage(img);
       if (typeof window !== 'undefined' && window.confetti) {
         window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
         window.confetti({
@@ -157,11 +139,12 @@ function App() {
         setAlbumGuessedCorrect(false);
         setSongGuessedCorrect(false);
         setWrongAttempts(0);
-        setWinMessage(null);
+        setWinImage(null);
         setCelebrated(false);
-        setLoseMessage(null);
+        setLoseImage(null);
         setUsedLoseIndices([]);
-        setLoseMessageId(0);
+        setLoseImageId(0);
+
         if (loseMessageTimeoutRef.current) {
           clearTimeout(loseMessageTimeoutRef.current);
           loseMessageTimeoutRef.current = null;
@@ -183,6 +166,7 @@ function App() {
       !albumGuessedCorrect &&
       albumGuessNormalized &&
       albumGuessNormalized === normalize(album);
+
     const isSongCorrectThisSubmit =
       !songGuessedCorrect &&
       songGuessNormalized &&
@@ -210,14 +194,17 @@ function App() {
 
     if (!bothCorrectNow) {
       setWrongAttempts(prev => (prev < 3 ? prev + 1 : prev));
-      const msg = pickUniqueLoseMessage();
-      setLoseMessage(msg);
-      setLoseMessageId(prev => prev + 1);
+
+      const idx = pickUniqueLoseImageIndex();
+
+      setLoseImage(loseImages[idx]);
+      setLoseImageId(prev => prev + 1);
+
       if (loseMessageTimeoutRef.current) {
         clearTimeout(loseMessageTimeoutRef.current);
       }
       loseMessageTimeoutRef.current = setTimeout(() => {
-        setLoseMessage(null);
+        setLoseImage(null);
         loseMessageTimeoutRef.current = null;
       }, 2000);
     }
@@ -293,11 +280,16 @@ function App() {
             <button type="button" onClick={fetchLyric}>
               Get New Lyric
             </button>
-            {winMessage && <div className="win-message">{winMessage}</div>}
-            {loseMessage && (
-              <div key={loseMessageId} className="lose-message">
-                {loseMessage}
-              </div>
+            {winImage && (
+              <img className="win-message" src={winImage} alt="Win" />
+            )}
+            {loseImage && (
+              <img
+                key={loseImageId}
+                className="lose-message"
+                src={loseImage}
+                alt="Lose"
+              />
             )}
           </div>
         </form>
